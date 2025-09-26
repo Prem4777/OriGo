@@ -190,18 +190,18 @@ export function NatpacDashboard({ onLogout }) {
           <View style={styles.metricsRow}>
             <View style={styles.metricCard}>
               <Users size={20} color="#2563eb" />
-              <Text style={styles.metricValue}>12,429</Text>
-              <Text style={styles.metricLabel}>Active Trips</Text>
+              <Text style={styles.metricValue}>{realTimeData.tripsToday.toLocaleString()}</Text>
+              <Text style={styles.metricLabel}>Trips Today</Text>
             </View>
             <View style={styles.metricCard}>
               <TrendingUp size={20} color="#059669" />
-              <Text style={styles.metricValue}>78%</Text>
-              <Text style={styles.metricLabel}>Capacity</Text>
+              <Text style={styles.metricValue}>{`${realTimeData.peakCapacity}%`}</Text>
+              <Text style={styles.metricLabel}>Peak Capacity Today</Text>
             </View>
             <View style={styles.metricCard}>
               <MapPin size={20} color="#8b5cf6" />
               <Text style={styles.metricValue}>186</Text>
-              <Text style={styles.metricLabel}>Routes</Text>
+              <Text style={styles.metricLabel}>Active Routes</Text>
             </View>
           </View>
           
@@ -253,37 +253,15 @@ export function NatpacDashboard({ onLogout }) {
             </View>
           </View>
           
-          {/* Environmental Impact */}
-          <View style={styles.reportSection}>
-            <Text style={styles.reportSectionTitle}>Environmental Impact</Text>
-            <View style={styles.environmentalStats}>
-              <View style={styles.envStatItem}>
-                <Zap size={16} color="#059669" />
-                <Text style={styles.envStatValue}>2.3 MWh</Text>
-                <Text style={styles.envStatLabel}>Energy Saved</Text>
-              </View>
-              <View style={styles.envStatItem}>
-                <Text style={styles.envStatEmoji}>🌿</Text>
-                <Text style={styles.envStatValue}>1,847 kg</Text>
-                <Text style={styles.envStatLabel}>CO₂ Reduced</Text>
-              </View>
-              <View style={styles.envStatItem}>
-                <Text style={styles.envStatEmoji}>🌍</Text>
-                <Text style={styles.envStatValue}>94%</Text>
-                <Text style={styles.envStatLabel}>Eco-Friendly</Text>
-              </View>
-            </View>
-          </View>
         </Card>
         
         {/* Export Daily Report */}
         <Button 
           onPress={() => {
             const dailyReportData = [
-              { metric: 'Active Trips', value: 12429, timestamp: new Date().toISOString() },
-              { metric: 'Peak Capacity', value: 92, timestamp: new Date().toISOString() },
-              { metric: 'Energy Saved (MWh)', value: 2.3, timestamp: new Date().toISOString() },
-              { metric: 'CO2 Reduced (kg)', value: 1847, timestamp: new Date().toISOString() }
+              { metric: 'Trips Today', value: realTimeData.tripsToday, timestamp: new Date().toISOString() },
+              { metric: 'Peak Capacity (%)', value: realTimeData.peakCapacity, timestamp: new Date().toISOString() },
+              { metric: 'Active Routes', value: 186, timestamp: new Date().toISOString() }
             ];
             exportToCSV(dailyReportData, 'daily_report.csv');
           }} 
@@ -461,7 +439,9 @@ const styles = StyleSheet.create({
     borderRadius: 12, 
     paddingVertical: 12,
     paddingHorizontal: 20,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -622,38 +602,11 @@ const styles = StyleSheet.create({
     color: '#3b82f6',
     fontWeight: '500'
   },
-  environmentalStats: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  envStatItem: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#f0fdf4',
-    borderRadius: 12,
-    padding: 16,
-    marginHorizontal: 4
-  },
-  envStatEmoji: {
-    fontSize: 20,
-    marginBottom: 4
-  },
-  envStatValue: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: '#059669',
-    marginTop: 4,
-    marginBottom: 2
-  },
-  envStatLabel: {
-    fontSize: 11,
-    color: '#16a34a',
-    textAlign: 'center'
-  },
   reportExportBtn: {
     backgroundColor: '#2563eb',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: 8
   },
 });

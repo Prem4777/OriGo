@@ -7,6 +7,7 @@ import { Button } from './ui/button';
 import { Card } from './ui/card';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
+import MapTracker from './map-tracker';
 
 const TABS = [
   { key: 'home', label: 'Home', icon: Home },
@@ -145,6 +146,9 @@ export function MainDashboard({ onLogout }) {
             <View style={styles.tripStat}><Text style={styles.tripStatLabel}>Co-travelers</Text><Text style={styles.tripStatValue}>{currentTrip.coTravelers}</Text></View>
           </View>
           <Progress value={65} style={styles.progressBar} />
+          <View style={styles.mapContainer}>
+            <MapTracker isActive={isTracking} />
+          </View>
         </Card>
       ) : (
         <Card style={styles.startTripCard}>
@@ -567,6 +571,7 @@ const styles = StyleSheet.create({
   tripStatLabel: { color: '#64748b', fontSize: 12 },
   tripStatValue: { color: '#1e293b', fontWeight: '600', fontSize: 14 },
   progressBar: { height: 6, borderRadius: 3, backgroundColor: '#a7f3d0' },
+  mapContainer: { marginTop: 12, borderRadius: 12, overflow: 'hidden', height: 220 },
   startTripCard: { backgroundColor: '#fff', borderRadius: 12, marginBottom: 16, padding: 16 },
   startTripTitle: { color: '#1e293b', fontWeight: '700', fontSize: 16, marginBottom: 4 },
   startTripDesc: { color: '#64748b', fontSize: 13, marginBottom: 12 },

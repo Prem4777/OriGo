@@ -9,14 +9,13 @@ OriGo is a comprehensive mobile application designed to track travel patterns an
 - **Co-traveler Connect**: QR code-based system to connect with fellow travelers
 - **Community Sharing**: Share scenic photos and discover popular Kerala destinations
 - **Rewards System**: Earn points for trips and unlock Kerala tourism rewards
-- **Personal Insights**: Track your travel patterns, distances, and environmental impact
+- **Personal Insights**: Track your travel patterns and distances
 
 ### For NATPAC Administrators
 - **Analytics Dashboard**: Comprehensive view of Kerala transportation data
 - **Real-time Monitoring**: Live trip data and transportation capacity tracking
 - **Daily Reports**: Automated daily summaries with key metrics
 - **Data Export**: CSV export functionality for further analysis
-- **Environmental Impact Tracking**: Monitor energy savings and CO₂ reduction
 
 ## 🚀 Tech Stack
 
@@ -104,13 +103,6 @@ OriGo is a comprehensive mobile application designed to track travel patterns an
 - **Transparent Communication**: Clear explanation of what data is collected and why
 - **User Control**: Users can decline data sharing while still using the app
 
-## 🌱 Environmental Impact
-
-OriGo helps track and promote sustainable transportation choices:
-- Energy savings monitoring
-- CO₂ reduction tracking
-- Public transportation promotion
-- Eco-friendly travel rewards
 
 ## 📈 Data Insights
 
